@@ -2,7 +2,7 @@ import React from 'react';
 import Advertised from '../Advertised/Advertised';
 import Banner from '../Banner/Banner';
 import MyComponent from '../MyComponent/MyComponent';
-import ProductCatagories from '../product categories/ProductCatagories';
+import ProductCatagories from '../productCategories/ProductCatagories';
 
 const Home = () => {
     return (
