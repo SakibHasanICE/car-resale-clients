@@ -13,12 +13,6 @@ const Navbar = () => {
           <li>
             <Link to="about">About Us</Link>
           </li>
-          <li>
-            <Link to="appointment">Appointment</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
         </React.Fragment>
         );
   return (
@@ -50,7 +44,7 @@ const Navbar = () => {
             
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl">Doctor Portal</Link>
+        <Link to='/' className="btn btn-ghost normal-case text-xl">Car Resale</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
