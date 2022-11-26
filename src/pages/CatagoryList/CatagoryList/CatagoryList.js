@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useLoaderData } from "react-router-dom";
-import CatagorylistData from "../../CatagorylistData/CatagorylistData";
-import { AuthContext } from "../../Contexts/UserContexts";
+import CatagorylistData from "../CatagorylistData/CatagorylistData";
 
 const CatagoryList = () => {
-  const { user } = useContext(AuthContext);
   const CatagoryCollections = useLoaderData();
 
   console.log(CatagoryCollections);

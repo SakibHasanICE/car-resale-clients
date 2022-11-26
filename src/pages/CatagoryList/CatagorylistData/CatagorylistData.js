@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CatagorylistData = ({CatagoryCollection}) => {
-    const {_id,resaleprice,originalprice,age,location,CatagoryName,sellername,picture,registered,companyname} = CatagoryCollection;
+    const {resaleprice,originalprice,age,location,sellername,picture,registered,companyname} = CatagoryCollection;
     return (
         <div>
             <div className="card card-side bg-base-100 shadow-xl">
