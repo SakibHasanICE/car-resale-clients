@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCatagoriesData = ({ catagory }) => {
-  const { _id,img,CatagoryName } = catagory;
-  console.log(_id, img,CatagoryName)
+  const {img,CatagoryName } = catagory;
   return (
     <div className="border-slate-400 rounded-md border-2 px-4 pb-9">
      

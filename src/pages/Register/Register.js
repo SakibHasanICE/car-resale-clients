@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../Contexts/UserContexts';
 
  
 const Register = () => {
-     const{newUser,signinWithGoogle}=useContext(AuthContext);
+     const{newUser,signinWithGoogle,updateUser}=useContext(AuthContext);
+     const navigate=useNavigate();
     const handleSubmit = event=>{
         event.preventDefault();
         const form =event.target;
@@ -17,6 +18,14 @@ const Register = () => {
          .then(result =>{
            const user=result.user;
            console.log(user)
+           const userInfo={
+            displayName:name
+           }
+           updateUser(userInfo)
+           .then(()=>{
+            saveUser(name,email);
+           })
+           .catch(err=>console.log(err))
          })
          .catch(error=>{
             console.error(error);
@@ -30,6 +39,20 @@ const Register = () => {
             })
             .catch(error=>console.error(error))
     }
+    
+    const saveUser = (name, email) =>{
+        const user ={name, email};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+          navigate('/');
+        }
    
     return (
         <div className='form-container h-fit container mx-auto mb-14'>

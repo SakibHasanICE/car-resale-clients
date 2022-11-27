@@ -4,6 +4,12 @@ import CatagoryList from "../pages/CatagoryList/CatagoryList/CatagoryList";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
+import Dashboard from "../pages/Dashboard/Dashboard/Dashboard"
+import MyBooking from "../pages/Dashboard/MyBooking/MyBooking"
+import AddProduct from "../pages/Dashboard/AddProduct/AddProduct"
+import AllSellers from "../pages/Dashboard/AllSellers/AllSellers"
+import AllBuyers from "../pages/Dashboard/AllBuyers/AllBuyers"
 
 export const router=createBrowserRouter([
     {
@@ -24,11 +30,34 @@ export const router=createBrowserRouter([
             },
             {
                 path: "/catagory/:CatagoryName",
-                element: <CatagoryList></CatagoryList>,
+                element:<PrivateRoutes><CatagoryList></CatagoryList></PrivateRoutes>,
                 loader: ({ params }) =>
                 fetch(`http://localhost:5000/catagory/${params.CatagoryName}`),
               },
         ]
+    },
+    {
+        path:'/dashboard',
+        element:<PrivateRoutes> <Dashboard></Dashboard> </PrivateRoutes>,
+        children:[
+            {
+                path:'myorders',
+                element:<MyBooking></MyBooking>,
+            },
+            {
+                path:'addproducts',
+                element:<AddProduct></AddProduct>,
+            },
+            {
+                path: 'allsellers',
+                element: <AllSellers></AllSellers>,
+            },
+            {
+                path: 'allbuyers',
+                element: <AllBuyers></AllBuyers>,
+                loader:()=>fetch('http://localhost:5000/users')
+            },
+    ]
     }
 ])
 export default router;

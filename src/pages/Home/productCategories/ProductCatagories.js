@@ -18,6 +18,7 @@ const ProductCatagories = () => {
            <ProductCatagoriesData key={catagory.id} catagory={catagory}></ProductCatagoriesData>
         ))}
         ;
+        
       </div>
     </div>
     );

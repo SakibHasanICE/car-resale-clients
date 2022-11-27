@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CatagorylistData = ({CatagoryCollection}) => {
+const CatagorylistData = ({CatagoryCollection,setBooking}) => {
     const {resaleprice,originalprice,age,location,sellername,picture,registered,companyname} = CatagoryCollection;
     return (
         <div>
             <div className="card card-side bg-base-100 shadow-xl">
-        <figure className='w-3/4'>
+        <figure className='w-2/4'>
           <img className='ml-7' src={picture} alt="Movie" />
         </figure>
         <div className="card-body">
@@ -18,7 +18,9 @@ const CatagorylistData = ({CatagoryCollection}) => {
           <p><span className='font-semibold text-xl'>Time of posted:</span> {registered}</p>
           <p><span className='font-semibold text-xl'>Seller name:</span> {sellername}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Book now</button>
+            <label onClick={()=> setBooking(CatagoryCollection)}
+            htmlFor="catagoryModal" className="btn btn-primary"
+            >Book now</label>
           </div>
         </div>
       </div>
