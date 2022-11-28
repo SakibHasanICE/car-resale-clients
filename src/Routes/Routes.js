@@ -10,6 +10,7 @@ import MyBooking from "../pages/Dashboard/MyBooking/MyBooking"
 import AddProduct from "../pages/Dashboard/AddProduct/AddProduct"
 import AllSellers from "../pages/Dashboard/AllSellers/AllSellers"
 import AllBuyers from "../pages/Dashboard/AllBuyers/AllBuyers"
+import AdminRoute from "./AdminRoute/AdminRoute";
 
 export const router=createBrowserRouter([
     {
@@ -50,11 +51,11 @@ export const router=createBrowserRouter([
             },
             {
                 path: 'allsellers',
-                element: <AllSellers></AllSellers>,
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>,
             },
             {
                 path: 'allbuyers',
-                element: <AllBuyers></AllBuyers>,
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>,
                 loader:()=>fetch('http://localhost:5000/users')
             },
     ]

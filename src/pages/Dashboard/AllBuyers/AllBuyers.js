@@ -1,20 +1,39 @@
 import React from "react";
 import { useLoaderData } from "react-router";
-import AllBuyersdata from "./AllBuyersData/AllBuyersdata";
 
 const AllBuyers = () => {
-    const allBuyers=useLoaderData();
+  const allBuyers = useLoaderData();
   return (
-    <div>
-      <div className="card gap-9 mx-5 mt-5 grid grid-cols-1 lg:grid-cols-1">
-        {allBuyers.map((allBuyer,i) => (
-          <AllBuyersdata
-            key={allBuyer._id}
-            allBuyer={allBuyer}
-            index={i}
-          ></AllBuyersdata>
-        ))};
-      </div>
+    <div className="overflow-x-auto">
+      <h3 className="font-bold text-lg mb-3">All Buyers: </h3>
+      <table className="table table-compact w-full">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allBuyers.map((allBuyer, i) => (
+            <tr key={allBuyer._id}>
+              <th>{i + 1}</th>
+              <td>{allBuyer._id}</td>
+              <td>{allBuyer.name}</td>
+              <td>{allBuyer.email}</td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Number</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   );
 };

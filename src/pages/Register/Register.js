@@ -35,6 +35,7 @@ const Register = () => {
             signinWithGoogle()
             .then(result=>{
                 const user=result.user;
+                saveUser(result.user.displayName,result.user.email);
                 console.log(user)
             })
             .catch(error=>console.error(error))
