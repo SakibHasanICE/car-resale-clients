@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AddProduct = () => {
   return (
@@ -6,10 +7,9 @@ const AddProduct = () => {
       <div className=" w-11/12">
         <div className="card  shadow-2xl bg-base-100">
           <div className="card-body">
-            
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-bold">Name:</span>
+                <span className="label-text font-bold">Product Name:</span>
               </label>
               <input
                 type="text"
@@ -17,7 +17,7 @@ const AddProduct = () => {
                 className="input input-bordered"
               />
             </div>
-            
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Resale Price:</span>
@@ -39,7 +39,7 @@ const AddProduct = () => {
                 className="input input-bordered"
               />
             </div>
-            
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Mobile Number:</span>
@@ -50,7 +50,7 @@ const AddProduct = () => {
                 className="input input-bordered"
               />
             </div>
-            
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Location:</span>
@@ -71,7 +71,7 @@ const AddProduct = () => {
                 className="input input-bordered"
               />
             </div>
-             
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Original Price:</span>
@@ -82,7 +82,7 @@ const AddProduct = () => {
                 className="input input-bordered"
               />
             </div>
-            
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Description:</span>
@@ -93,11 +93,13 @@ const AddProduct = () => {
                 className="input input-bordered"
               />
             </div>
-           
+
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Submit</button>
+              <Link to="/addproducts/myproducts">
+                {" "}
+                <button className="btn btn-primary">Submit</button>
+              </Link>
             </div>
-          
           </div>
         </div>
       </div>

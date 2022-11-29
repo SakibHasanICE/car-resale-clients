@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/UserContexts";
 
 const Register = () => {
   const { newUser, signinWithGoogle, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,7 +17,10 @@ const Register = () => {
         if(role){
           role=role;
         }
-
+        else{
+          role='buyer'
+        }
+       
     console.log(name, email, password);
     form.reset();
     newUser(email, password, name)
@@ -35,11 +40,12 @@ const Register = () => {
         console.error(error);
       });
   };
-  const handleGooglesignin = () => {
-    signinWithGoogle()
+  const handleGooglesignin = (role) => {
+    signinWithGoogle(role)
       .then((result) => {
+        navigate(from, { replace: true });
         const user = result.user;
-        saveUser(result.user.displayName, result.user.email);
+        saveUser(user.displayName, user.email,role='buyer');
         console.log(user);
       })
       .catch((error) => console.error(error));
@@ -93,7 +99,7 @@ const Register = () => {
           required
         />
         <label className="block mt-4 text-left ml-12" htmlFor="password">
-        <p className="text-center mr-14 mb-2">Please Provide Your Role:<br></br> 
+        <p className="text-center mr-20 mb-2">Please Provide Your Role:<br></br> 
         Write <span className="text-violet-800 font-bold text-xl">buyer</span>  or  <span  className="text-violet-800 font-bold text-xl">seller</span></p>
         </label>
         <input
@@ -101,7 +107,7 @@ const Register = () => {
           type="text"
           name="selectRole"
          placeholder="seller/buyer"
-          required
+          
         />
 
         <button

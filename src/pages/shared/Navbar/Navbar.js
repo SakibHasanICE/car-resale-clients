@@ -16,7 +16,7 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="about">About Us</Link>
+            <Link to="/blog">Blog</Link>
           </li>
           {user?.email?
           <>

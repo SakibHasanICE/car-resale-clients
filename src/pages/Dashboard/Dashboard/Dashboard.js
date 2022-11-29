@@ -19,13 +19,18 @@ const Dashboard = () => {
         <ul className="menu bg-base-100 w-56">
           {isBuyer && (
             <li>
-              <Link to="myorders">My Orders</Link>
+              <Link to="myorders">My Bookings</Link>
             </li>
           )}
           {isSeller && (
+            <>
             <li>
               <Link to="addproducts">Add a Product</Link>
             </li>
+            <li>
+              <Link to="myproducts">My Products</Link>
+            </li>
+            </>
           )}
           {isAdmin && (
             <>
