@@ -13,14 +13,8 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    let role=form.selectRole.value
-        if(role){
-          role=role;
-        }
-        else{
-          role='buyer'
-        }
-       
+    const role = form.role.value;
+
     console.log(name, email, password);
     form.reset();
     newUser(email, password, name)
@@ -45,14 +39,14 @@ const Register = () => {
       .then((result) => {
         navigate(from, { replace: true });
         const user = result.user;
-        saveUser(user.displayName, user.email,role='buyer');
+        saveUser(user.displayName, user.email, (role = "buyer"));
         console.log(user);
       })
       .catch((error) => console.error(error));
   };
 
   const saveUser = (name, email, role) => {
-    const user = { name, email, role};
+    const user = { name, email, role };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -64,7 +58,7 @@ const Register = () => {
       .then((data) => console.log(data));
     navigate("/");
   };
-  
+
   return (
     <div className="form-container h-fit container mx-auto mb-14">
       <h2 className="text-3xl text-center">Register</h2>
@@ -90,7 +84,7 @@ const Register = () => {
         />
 
         <label className="block mt-4 text-left ml-12" htmlFor="password">
-        Password
+          Password
         </label>
         <input
           className="border-black border-2 p-3 ml-11 rounded-md w-9/12 h-10"
@@ -98,17 +92,16 @@ const Register = () => {
           name="password"
           required
         />
-        <label className="block mt-4 text-left ml-12" htmlFor="password">
-        <p className="text-center mr-20 mb-2">Please Provide Your Role:<br></br> 
-        Write <span className="text-violet-800 font-bold text-xl">buyer</span>  or  <span  className="text-violet-800 font-bold text-xl">seller</span></p>
-        </label>
-        <input
-          className="border-black border-2 p-3 ml-11 rounded-md w-9/12 h-10"
-          type="text"
-          name="selectRole"
-         placeholder="seller/buyer"
-          
-        />
+        <select
+          name="role"
+          className="select select-info w-full max-w-xs ml-9 mt-4"
+        >
+          <option disabled selected>
+            Please Select Your Role:
+          </option>
+          <option>seller</option>
+          <option>buyer</option>
+        </select>
 
         <button
           className="block w-9/12 rounded-md bg-red-500 mx-auto mt-5 h-10 text-white font-bold text-xl"

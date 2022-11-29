@@ -49,10 +49,10 @@ const CatagoryModal = ({booking}) => {
           </p>
       
           <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3'>
-          <label className='block text-left mt-1 font-bold' htmlFor="location"> User Name: </label>
+          <label className='block text-left mt-1 font-bold' htmlFor="name"> User Name: </label>
           <input className='border-black border-2 p-3 rounded-md w-full h-10' type="text" defaultValue={user?.displayName} disabled   name="name" required/>
          
-          <label className='block text-left  font-bold' htmlFor="location"> User Email: </label>
+          <label className='block text-left  font-bold' htmlFor="email"> User Email: </label>
           <input className='border-black border-2 p-3 rounded-md w-full h-10' type="text" defaultValue={user?.email} disabled   name="email" required/>
           
           <label className='block text-left  font-bold' htmlFor="phone-number">Phone Number:</label>
