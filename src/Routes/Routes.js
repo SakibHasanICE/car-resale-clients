@@ -11,6 +11,8 @@ import AddProduct from "../pages/Dashboard/AddProduct/AddProduct"
 import AllSellers from "../pages/Dashboard/AllSellers/AllSellers"
 import AllBuyers from "../pages/Dashboard/AllBuyers/AllBuyers"
 import AdminRoute from "./AdminRoute/AdminRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
+import BuyerRoute from "./BuyerRoute/BuyerRoute";
 
 export const router=createBrowserRouter([
     {
@@ -43,11 +45,11 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:'myorders',
-                element:<MyBooking></MyBooking>,
+                element:<BuyerRoute><MyBooking></MyBooking></BuyerRoute>,
             },
             {
                 path:'addproducts',
-                element:<AddProduct></AddProduct>,
+                element:<SellerRoute><AddProduct></AddProduct></SellerRoute>,
             },
             {
                 path: 'allsellers',
