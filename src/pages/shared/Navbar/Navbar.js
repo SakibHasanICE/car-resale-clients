@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/UserContexts";
+import img from "../../images/navimg.jpg"
 
 const Navbar = () => {
   const { user,logOut } = useContext(AuthContext);
@@ -62,6 +63,7 @@ const Navbar = () => {
             
           </ul>
         </div>
+        <img className="w-20 ml-14 rounded-2xl" src={img} alt="" />
         <Link to='/' className="btn btn-ghost normal-case text-xl">Car Resale</Link>
       </div>
       <div className="navbar-center hidden lg:flex">

@@ -33,7 +33,7 @@ const AddProduct = () => {
       location: location,
     };
     console.log(myproducts);
-    fetch("http://localhost:5000/myproducts", {
+    fetch("https://car-resale-server-tau.vercel.app/myproducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

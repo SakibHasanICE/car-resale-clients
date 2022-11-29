@@ -1,36 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 
 const AllSellers = () => {
- 
-
-  const {data: allSellers = [], refetch} = useQuery({
-    queryKey: ['allSellers'],
-    queryFn: async() =>{
-        const res = await fetch('http://localhost:5000/users');
-        const data = await res.json();
-        return data;
-    }
-});
-  const handleMakeAdmin = id => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
-        method: 'PUT', 
-        headers: {
-          authorization: `bearer ${localStorage.getItem('accessToken')}`
-      }
+  const { data: allSellers = [], refetch } = useQuery({
+    queryKey: ["allSellers"],
+    queryFn: async () => {
+      const res = await fetch("https://car-resale-server-tau.vercel.app/users");
+      const data = await res.json();
+      return data;
+    },
+  });
+  const handleMakeAdmin = (id) => {
+    fetch(`https://car-resale-server-tau.vercel.app/users/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.modifiedCount > 0){
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
           toast("Make Admin Successful");
-            refetch();
+          refetch();
         }
-    })
-}
+      });
+  };
   return (
-    
     <div className="overflow-x-auto">
       <ToastContainer />
       <h3 className="font-bold text-lg mb-3">All Sellers: </h3>
@@ -52,8 +49,19 @@ const AllSellers = () => {
               <td>{allSeller._id}</td>
               <td>{allSeller.name}</td>
               <td>{allSeller.email}</td>
-              <td>{ allSeller?.role !== 'admin' && <button onClick={() => handleMakeAdmin(allSeller._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
-            <td><button className='btn btn-xs btn-danger'>Delete</button></td>
+              <td>
+                {allSeller?.role !== "admin" && (
+                  <button
+                    onClick={() => handleMakeAdmin(allSeller._id)}
+                    className="btn btn-xs btn-primary"
+                  >
+                    Make Admin
+                  </button>
+                )}
+              </td>
+              <td>
+                <button className="btn btn-xs btn-danger">Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
