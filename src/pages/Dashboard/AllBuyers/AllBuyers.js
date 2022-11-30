@@ -13,6 +13,7 @@ const AllBuyers = () => {
             <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +23,9 @@ const AllBuyers = () => {
               <td>{allBuyer._id}</td>
               <td>{allBuyer.name}</td>
               <td>{allBuyer.email}</td>
+              <td>
+                <button className="btn btn-xs btn-danger">Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -31,6 +35,7 @@ const AllBuyers = () => {
             <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Delete</th>
           </tr>
         </tfoot>
       </table>

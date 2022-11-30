@@ -14,6 +14,8 @@ import AdminRoute from "./AdminRoute/AdminRoute";
 import SellerRoute from "./SellerRoute/SellerRoute";
 import BuyerRoute from "./BuyerRoute/BuyerRoute";
 import MyProducts from "../pages/Dashboard/My Products/MyProducts";
+import Blog from "../pages/Home/Blog/Blog";
+
 
 export const router = createBrowserRouter([
   {
@@ -24,9 +26,14 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/register",

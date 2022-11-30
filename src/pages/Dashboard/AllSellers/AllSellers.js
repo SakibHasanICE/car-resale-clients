@@ -38,7 +38,7 @@ const AllSellers = () => {
             <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Admin</th>
+            <th>Verify</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -55,7 +55,7 @@ const AllSellers = () => {
                     onClick={() => handleMakeAdmin(allSeller._id)}
                     className="btn btn-xs btn-primary"
                   >
-                    Make Admin
+                    Verify
                   </button>
                 )}
               </td>
@@ -71,7 +71,7 @@ const AllSellers = () => {
             <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Admin</th>
+            <th>Verify</th>
             <th>Delete</th>
           </tr>
         </tfoot>
